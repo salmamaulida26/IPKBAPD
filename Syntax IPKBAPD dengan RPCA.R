@@ -116,3 +116,18 @@ average_df <- average_df[order(-average_df$IndeksPuskesmas), ]
 average_df$RankPuskesmas <- 1:nrow(average_df)
 # Menampilkan update dataframe
 average_df
+
+# Kategorisasi
+q <- quantile(average_df$IndeksPuskesmas, probs = c(0, 0.25, 0.50, 0.75, 1))
+quantile(average_df$IndeksPuskesmas, probs = c(0.25, 0.5, 0.75))
+
+Kategorisasi <- cut(
+  average_df$IndeksPuskesmas, 
+  breaks = q, 
+  labels = c("Sangat Rendah", "Rendah", "Tinggi", "Sangat Tinggi"), 
+  include.lowest = TRUE
+)
+    
+# Kelompokkan Puskesmas berdasarkan kategori
+kategori_puskesmas <- split(row.names(average_df), average_df$Kategori)
+kategori_puskesmas
