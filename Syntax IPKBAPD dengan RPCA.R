@@ -129,5 +129,5 @@ Kategorisasi <- cut(
 )
     
 # Kelompokkan Puskesmas berdasarkan kategori
-kategori_puskesmas <- split(row.names(average_df), average_df$Kategori)
+kategori_puskesmas <- split(row.names(average_df), Kategorisasi)
 kategori_puskesmas
